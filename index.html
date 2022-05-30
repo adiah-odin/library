@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+	<title>Library</title>
+
+	<link rel="stylesheet" href="dist/style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<header class="header">
+		<div class="search">
+			<span class="iconify search__icon" data-icon="mdi:magnify"></span>
+			<input type="text" class="search__input">
+		</div>
+		<div class="menus">
+			<button type="button"><span class="iconify menus__notifications" data-icon="mdi:bell-ring-outline"></span></button>
+			<button class="menus__img" type="button"><img src="assets/img/profile.png" alt=""></button>
+			<button class="menus__username">Nathaniel Adiah</button>
+		</div>
+		<div class="details">
+			<img src="assets/img/profile.png" alt="" class="details__pic">
+			<span class="details__greeting">Hi there,</span>
+			<span class="details__name">Nathaniel Adiah (@nathaniel)</span>
+		</div>
+		<div class="actions">
+			<button class="actions__button">New</button>
+			<!-- <a href="#" class="actions__button">Upload</a>
+			<a href="#" class="actions__button">Save</a> -->
+		</div>
+	</header>
+
+
+	<main class="main">
+		<section id="library" class="library">
+			<h1 class="section-header">Your Books</h1>
+
+			<div class="container">
+				<div class="book" data-read="true">
+					<img src="assets/img/aliceinwonderland.jpg" alt="" class="book__cover">
+					<h2 class="book__title">Alice in Wonderland</h2>
+					<div class="book__body">
+						<p class="book__author">Lewis Carroll</p>
+						<p class="book__pages">Pages: 25</p>
+						<p class="book__status">Read: <span class="iconify" data-icon="mdi:checkbox-blank-circle"></span></p>
+					</div>
+					<div class="book__actions">
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:delete"></span></button>
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:share-variant"></span></button>
+					</div>
+				</div>
+
+
+			</div>
+	
+		</section>
+	</main>
+	
+</body>
+</html>

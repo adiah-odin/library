@@ -1,0 +1,134 @@
+// Header
+.header {
+	background-color: var(--clr-light);
+	grid-area: top-bar;
+	padding: 1rem 2.8125rem;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+	display: grid;
+	grid-template-columns: 3fr 2fr;
+	gap: 1.6875rem 1.875rem;
+	grid-template-rows: min-content;
+	grid-template-areas: 
+		'search menus'
+		'details actions';
+}
+
+.search {
+	grid-area: search;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__icon {
+		font-size: 1.125rem;
+	}
+
+	&__input {
+		width: 94%;
+		height: 2rem;
+		border: none;
+		background-color: var(--clr-gray);
+		border-radius: 1rem;
+
+		font-size: 1.25rem;
+		font-weight: 400;
+		padding-inline: 1rem;
+	}
+}
+
+.menus {
+	grid-area: menus;
+	justify-self: flex-end;
+	display: flex;
+	// justify-content: flex-end;
+	align-items: center;
+	gap: 1.875rem;
+
+	button {
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+
+		&.menus__img {
+			background-color: var(--clr-highlight);
+		}
+	}
+
+	&__notifications {
+		font-size: 1.375rem;
+	}
+
+	&__img {
+		border-radius: 50%;
+		width: 3rem;
+		border: none;
+		aspect-ratio: 1;
+		// background-color: salmon;
+
+		img {
+			width: 100%;
+			border-radius: 50%;
+		}
+	}
+
+	&__username {
+		font-size: 1.125rem;
+	}
+}
+
+.details {
+	grid-area: details;
+
+	display: grid;
+	column-gap: 1.3125rem;
+	grid-template-columns: 12% 1fr;
+	grid-template-rows: 1fr 1.7fr;
+	grid-template-areas: 
+		'pic greeting'
+		'pic name';
+
+
+	&__pic {
+		grid-area: pic;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background-color: var(--clr-highlight);
+	}
+
+	&__greeting {
+		grid-area: greeting;
+		font-size: 0.875rem;
+		align-self: flex-end;
+	}
+
+	&__name {
+		grid-area: name;
+		font-size: 1.5rem;
+		align-self: flex-start;
+	}
+}
+
+.actions {
+	grid-area: actions;
+
+	display: grid;
+	gap: 1.875rem;
+	// grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(min-content, 30%));
+	grid-template-rows: 1fr;
+	align-items: center;
+	justify-content: flex-end;
+	
+	&__button {
+		text-decoration: none;
+		background-color: var(--clr-primary);
+		color: var(--clr-light);
+		text-align: center;
+		border: none;
+		border-radius: 30px;
+		font-size: 1.1875rem;
+		padding-block: 0.5rem;
+		cursor: pointer;
+	}
+}
