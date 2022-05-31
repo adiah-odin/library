@@ -11,7 +11,7 @@
 	<title>Library</title>
 
 	<link rel="stylesheet" href="dist/style.css">
-	<script src="script.js" defer></script>
+	<script src="assets/js/script.js" defer></script>
 </head>
 <body>
 	<header class="header">
@@ -30,7 +30,7 @@
 			<span class="details__name">Nathaniel Adiah (@nathaniel)</span>
 		</div>
 		<div class="actions">
-			<button class="actions__button">New</button>
+			<button id="newBtn" class="actions__button">New</button>
 			<!-- <a href="#" class="actions__button">Upload</a>
 			<a href="#" class="actions__button">Save</a> -->
 		</div>
@@ -38,10 +38,75 @@
 
 
 	<main class="main">
-		<section id="library" class="library">
+		<section class="library">
 			<h1 class="section-header">Your Books</h1>
 
-			<div class="container">
+			<div id="library" class="container">
+				<div class="book" data-read="true">
+					<img src="assets/img/aliceinwonderland.jpg" alt="" class="book__cover">
+					<h2 class="book__title">Alice in Wonderland</h2>
+					<div class="book__body">
+						<p class="book__author">Lewis Carroll</p>
+						<p class="book__pages">Pages: 25</p>
+						<p class="book__status">Read: <span class="iconify" data-icon="mdi:checkbox-blank-circle"></span></p>
+					</div>
+					<div class="book__actions">
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:delete"></span></button>
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:share-variant"></span></button>
+					</div>
+				</div>
+				<div class="book" data-read="true">
+					<img src="assets/img/aliceinwonderland.jpg" alt="" class="book__cover">
+					<h2 class="book__title">Alice in Wonderland</h2>
+					<div class="book__body">
+						<p class="book__author">Lewis Carroll</p>
+						<p class="book__pages">Pages: 25</p>
+						<p class="book__status">Read: <span class="iconify" data-icon="mdi:checkbox-blank-circle"></span></p>
+					</div>
+					<div class="book__actions">
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:delete"></span></button>
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:share-variant"></span></button>
+					</div>
+				</div>
+				<div class="book" data-read="true">
+					<img src="assets/img/aliceinwonderland.jpg" alt="" class="book__cover">
+					<h2 class="book__title">Alice in Wonderland</h2>
+					<div class="book__body">
+						<p class="book__author">Lewis Carroll</p>
+						<p class="book__pages">Pages: 25</p>
+						<p class="book__status">Read: <span class="iconify" data-icon="mdi:checkbox-blank-circle"></span></p>
+					</div>
+					<div class="book__actions">
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:delete"></span></button>
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:share-variant"></span></button>
+					</div>
+				</div>
+				<div class="book" data-read="true">
+					<img src="assets/img/aliceinwonderland.jpg" alt="" class="book__cover">
+					<h2 class="book__title">Alice in Wonderland</h2>
+					<div class="book__body">
+						<p class="book__author">Lewis Carroll</p>
+						<p class="book__pages">Pages: 25</p>
+						<p class="book__status">Read: <span class="iconify" data-icon="mdi:checkbox-blank-circle"></span></p>
+					</div>
+					<div class="book__actions">
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:delete"></span></button>
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:share-variant"></span></button>
+					</div>
+				</div>
+				<div class="book" data-read="true">
+					<img src="assets/img/aliceinwonderland.jpg" alt="" class="book__cover">
+					<h2 class="book__title">Alice in Wonderland</h2>
+					<div class="book__body">
+						<p class="book__author">Lewis Carroll</p>
+						<p class="book__pages">Pages: 25</p>
+						<p class="book__status">Read: <span class="iconify" data-icon="mdi:checkbox-blank-circle"></span></p>
+					</div>
+					<div class="book__actions">
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:delete"></span></button>
+						<button type="button"><span class="iconify book_icon" data-icon="mdi:share-variant"></span></button>
+					</div>
+				</div>
 				<div class="book" data-read="true">
 					<img src="assets/img/aliceinwonderland.jpg" alt="" class="book__cover">
 					<h2 class="book__title">Alice in Wonderland</h2>
@@ -56,10 +121,51 @@
 					</div>
 				</div>
 
-
 			</div>
 	
 		</section>
+
+		<!-- Modal -->
+		<div id="newBookModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal__content">
+				<div class="modal__header">
+					<!-- <span class="close">&times;</span> -->
+					<h2>Add Book</h2>
+					<button id="close-modal" class="modal__close"><span class="iconify" data-icon="mdi:close"></span></button>
+				</div>
+				<div class="modal__body">
+					<form action="" class="form">
+						<div class="form__control">
+							<label for="cover">Cover Pic Url</label>
+							<input type="url" name="cover" id="cover">
+						</div>
+						<div class="form__control">
+							<label for="title">Book Title</label>
+							<input type="text" name="title" id="title" placeholder="Book Title">
+						</div>
+						<div class="form__control">
+							<label for="author">Author</label>
+							<input type="text" name="author" id="author">
+						</div>
+						<div class="form__control">
+							<label for="pageCount">Number of Pages</label>
+							<input type="number" name="pageCount" id="pageCount">
+						</div>
+						<div class="form__control--check">
+							<label for="readStatus">Read?</label>
+							<input type="checkbox" name="readStatus" id="readStatus">
+						</div>
+					</form>
+				</div>
+				<div class="modal__footer">
+					testing
+				</div>
+			</div>
+
+		</div>
+
 	</main>
 	
 </body>

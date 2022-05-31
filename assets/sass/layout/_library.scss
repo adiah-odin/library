@@ -63,6 +63,7 @@
 				margin-bottom: 1rem;
 				margin-inline: auto;
 				// width: 75%;
+				width: 100%;
 				aspect-ratio: 1 / 1.6;
 			}
 	
@@ -89,7 +90,11 @@
 				gap: 0.25rem;
 
 				.iconify {
-					color: pink;
+					color: var(--clr-gray);
+
+					&[data-status='true'] {
+						color: green;
+					}
 				}
 			}
 	
