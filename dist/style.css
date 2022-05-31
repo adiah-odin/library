@@ -337,10 +337,21 @@ body {
   color: green;
 }
 .library .container .book__actions {
-  align-self: flex-end;
-  margin-top: auto;
+  margin-top: 2rem;
   display: flex;
-  gap: 2rem;
+  align-items: center;
+}
+.library .container .book__actions .toggle {
+  margin-right: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+.library .container .book__actions .toggle p {
+  font-size: 1rem;
+  color: var(--clr-text-gray);
+}
+.library .container .book__actions .toggle input:checked + .slider {
+  background-color: green;
 }
 .library .container .book__actions button {
   border: none;
@@ -529,9 +540,6 @@ body {
   background-color: var(--clr-gray);
   transition: transform 400ms cubic-bezier(0.85, 0, 0.15, 1);
   border-radius: 34px;
-}
-.slider:hover {
-  background-color: var(--clr-primary);
 }
 .slider::before {
   position: absolute;

@@ -99,11 +99,28 @@
 			}
 	
 			&__actions {
-				align-self: flex-end;
-				margin-top: auto;
+				// align-self: flex-end;
+				margin-top: 2rem;
 	
 				display: flex;
-				gap: 2rem;
+				align-items: center;
+				// gap: 2rem;
+
+				.toggle {
+					margin-right: auto;
+					display: flex;
+					gap: 0.5rem;
+
+					p {
+						font-size: 1rem;
+						color: var(--clr-text-gray);
+					}
+
+					input:checked + .slider {
+						background-color: green;
+					}	
+
+				}
 	
 				button {
 					border: none;

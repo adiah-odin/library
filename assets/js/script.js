@@ -10,8 +10,9 @@ const openNewBookModalBtn = document.getElementById('newBtn');
 const deleteBookModal = document.getElementById('deleteBookModal');
 // const closeDeleteModalBtn = document.getElementById('closeDeleteModal')
 
+let myLibrary = [];
 
-let myLibrary = [
+let books = [
 	{
 		cover: 'hobbit.jpg',
 		title: 'The Hobbit',
@@ -63,6 +64,17 @@ let myLibrary = [
 	}
 ];
 
+// Test books for the library
+books.forEach( book => {
+	addBookToLibrary(
+		book.cover,
+		book.title,
+		book.author,
+		book.pageCount,
+		book.readStatus
+	)
+})
+
 
 function Book(cover, title, author, pageCount, status=false) {
 	this.cover = cover
@@ -76,10 +88,13 @@ function Book(cover, title, author, pageCount, status=false) {
 
 		return infoString;
 	}
+
+	this.changeReadStatus = () => {
+		this.readStatus = !this.readStatus;
+		// displayBooks();
+	}
 }
-// Book.prototype.info = () => {
-// 	return `${this.title} by ${this.author}, ${this.pageCount} pages, ${this.readStatus ? 'not read yet' : 'finished reading' }`;
-// }
+
 
 function addBookToLibrary(cover, title, author, pageCount, status) {
 	let newBook = new Book(cover, title, author, pageCount, status);
@@ -127,24 +142,57 @@ function displayBooks() {
 
 		// The status
 
-		const status = document.createElement('p');
-		status.className = ('book__status');
-		status.innerText = 'Read: ';
+		// const status = document.createElement('p');
+		// status.className = ('book__status');
+		// status.innerText = 'Read: ';
 
-		const statusIcon = document.createElement('span');
-		statusIcon.className = ('iconify');
-		statusIcon.dataset.icon = book.readStatus ? 'mdi:check-circle' : 'mdi:checkbox-blank-circle';
-		statusIcon.dataset.status = book.readStatus ? 'true' : 'false';
+		// const statusIcon = document.createElement('span');
+		// statusIcon.className = ('iconify');
+		// statusIcon.dataset.icon = book.readStatus ? 'mdi:check-circle' : 'mdi:checkbox-blank-circle';
+		// statusIcon.dataset.status = book.readStatus ? 'true' : 'false';
 
-		status.appendChild(statusIcon);
+		// status.appendChild(statusIcon);
 
 		// add the elements to the body
-		body.append(author, pageCount, status);
+		body.append(author, pageCount);
 
 		// Create the actions
 		const actions = document.createElement('div');
 		actions.className = ('book__actions')
 
+		// mark as read
+
+		const readToggle = document.createElement('div');
+		readToggle.className = ('toggle');
+
+		const label = document.createElement('p');
+		label.innerText = 'Read?';
+
+		const toggleSwitch = document.createElement('label');
+		toggleSwitch.className = ('switch');
+
+		const toggleCheck = document.createElement('input');
+		toggleCheck.setAttribute('type', 'checkbox');
+		toggleCheck.setAttribute('name', 'readStatus');
+		if (book.readStatus) {
+			toggleCheck.setAttribute('checked', '');
+		}
+
+		toggleCheck.onchange = () => {
+			book.changeReadStatus();
+			card.dataset.read = book.readStatus ? 'true' : 'false';
+		}
+
+
+		const slider = document.createElement('span');
+		slider.className = ('slider');
+
+		toggleSwitch.append(toggleCheck, slider);
+
+		readToggle.append(label, toggleSwitch);
+
+
+		// delete
 		const deleteBtn = document.createElement('button');
 		deleteBtn.setAttribute('type', 'button');
 		const deleteIcon = document.createElement('span');
@@ -173,7 +221,7 @@ function displayBooks() {
 		shareIcon.dataset.icon = 'mdi:share-variant';
 		shareBtn.append(shareIcon);
 
-		actions.append(deleteBtn, shareBtn);
+		actions.append(readToggle, deleteBtn, shareBtn);
 
 		card.append(cover, title, body, actions);
 
