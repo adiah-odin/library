@@ -1,3 +1,16 @@
+const newBookForm = document.getElementById('newBookForm');
+const library =  document.getElementById('library');
+
+const closeModalBtns = document.querySelectorAll('.closeModal');
+
+const newBookModal = document.getElementById('newBookModal');
+const openNewBookModalBtn = document.getElementById('newBtn');
+// const closeNewBookModalBtn = document.getElementById('close-modal');
+
+const deleteBookModal = document.getElementById('deleteBookModal');
+// const closeDeleteModalBtn = document.getElementById('closeDeleteModal')
+
+
 let myLibrary = [
 	{
 		cover: 'hobbit.jpg',
@@ -50,7 +63,6 @@ let myLibrary = [
 	}
 ];
 
-const library =  document.getElementById('library');
 
 function Book(cover, title, author, pageCount, status=false) {
 	this.cover = cover
@@ -65,7 +77,6 @@ function Book(cover, title, author, pageCount, status=false) {
 		return infoString;
 	}
 }
-
 // Book.prototype.info = () => {
 // 	return `${this.title} by ${this.author}, ${this.pageCount} pages, ${this.readStatus ? 'not read yet' : 'finished reading' }`;
 // }
@@ -76,13 +87,22 @@ function addBookToLibrary(cover, title, author, pageCount, status) {
 	displayBooks();
 }
 
+function deleteBook(index) {
+	console.log(`delete book: ${myLibrary[index].title}`)
+	// Bad practice
+	myLibrary.splice(index, 1);
+	displayBooks();
+
+	hideModal(deleteBookModal);
+}
 
 function displayBooks() {
 	library.innerHTML = '';
 
-	myLibrary.forEach(book => {
+	myLibrary.forEach( (book, index) => {
 		const card = document.createElement('div');
 		card.className = ('book');
+		card.dataset.index = index;
 
 		const cover = document.createElement('img');
 		cover.className = ('book__cover');
@@ -128,14 +148,28 @@ function displayBooks() {
 		const deleteBtn = document.createElement('button');
 		deleteBtn.setAttribute('type', 'button');
 		const deleteIcon = document.createElement('span');
-		deleteIcon.className = ('iconify book__icon');
+		deleteIcon.className = ('iconify book__icon book__icon--delete');
 		deleteIcon.dataset.icon = 'mdi:delete';
 		deleteBtn.append(deleteIcon);	
+		deleteBtn.dataset.index = index;
+		
+		// Open a confirm delete modal and associate the confirm 
+		// button with the correct book.
+		deleteBtn.onclick = () => {
+			const confirmDelete = document.getElementById('modalDeleteBtn');
+
+			confirmDelete.onclick = () => {
+				deleteBook(index);
+				// hideModal(deleteBookModal);
+			}
+
+			showModal(deleteBookModal);
+		};
 
 		const shareBtn = document.createElement('button');
 		shareBtn.setAttribute('type', 'button');
 		const shareIcon = document.createElement('span');
-		shareIcon.className = ('iconify book__icon');
+		shareIcon.className = ('iconify book__icon book__icon--share');
 		shareIcon.dataset.icon = 'mdi:share-variant';
 		shareBtn.append(shareIcon);
 
@@ -149,16 +183,10 @@ function displayBooks() {
 	})
 }
 
-// addBookToLibrary('eragon.png', 'Eragon', 'Christopher Paolini', '300', false);
-
-// console.log(myLibrary[7].info());
-
 displayBooks();
 
 
-// Handle the form
-const newBookForm = document.getElementById('newBookForm');
-
+// Add new books with modal form
 newBookForm.onsubmit = handleSubmit;
 
 function handleSubmit(e) {
@@ -174,36 +202,35 @@ function handleSubmit(e) {
 		formProps.pageCount,
 		formProps.readStatus ? true : false
 	)
-	hideModal();
+	hideModal(newBookModal);
 	newBookForm.reset()
 }
 
-
-// modal codes
-
-const modal = document.getElementById('newBookModal');
-const btn = document.getElementById('newBtn');
-const closeBtn = document.getElementById('close-modal');
-
-btn.onclick = () => {
-	showModal();
-}
-
-closeBtn.onclick = () => {
-	hideModal();
+// Modal
+openNewBookModalBtn.onclick = () => {
+	showModal(newBookModal);
 }
 
 
-window.onclick = event => {
-	if (event.target == modal) {
-		hideModal();
+closeModalBtns.forEach(btn => {
+	btn.onclick = () => {
+		hideModal(window[btn.dataset.modal])
+		// Instead of using the variable name try creating
+		// an object with all the modals and referencing that one
 	}
-}
+})
 
-function showModal() {
+
+// window.onclick = event => {
+// 	if (event.target == modal) {
+// 		hideModal(newBookModal);
+// 	}
+// }
+
+function showModal(modal) {
 	modal.style.display = 'block';
 }
 
-function hideModal() {
+function hideModal(modal) {
 	modal.style.display = 'none';
 }

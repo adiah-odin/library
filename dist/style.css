@@ -347,6 +347,12 @@ body {
   background-color: transparent;
   cursor: pointer;
 }
+.library .container .book__actions button .book__icon--delete {
+  color: red;
+}
+.library .container .book__actions button .book__icon--share {
+  color: var(--clr-primary);
+}
 
 .modal {
   display: none;

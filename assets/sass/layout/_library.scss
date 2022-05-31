@@ -109,6 +109,17 @@
 					border: none;
 					background-color: transparent;
 					cursor: pointer;
+
+					.book__icon {
+
+						&--delete {
+							color: red;
+						}
+
+						&--share {
+							color: var(--clr-primary);
+						}
+					}
 				}
 			}
 
