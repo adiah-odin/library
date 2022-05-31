@@ -52,10 +52,11 @@ let myLibrary = [
 
 const library =  document.getElementById('library');
 
-function Book(title, author, pages, status) {
+function Book(cover, title, author, pageCount, status=false) {
+	this.cover = cover
 	this.title = title
 	this.author = author
-	this.pageCount = pages
+	this.pageCount = pageCount
 	this.readStatus = status
 
 	this.info = () => {
@@ -65,9 +66,14 @@ function Book(title, author, pages, status) {
 	}
 }
 
-function addBookToLibrary(title, author, pages, status) {
-	let newBook = new Book(title, author, pages, status);
+// Book.prototype.info = () => {
+// 	return `${this.title} by ${this.author}, ${this.pageCount} pages, ${this.readStatus ? 'not read yet' : 'finished reading' }`;
+// }
+
+function addBookToLibrary(cover, title, author, pageCount, status) {
+	let newBook = new Book(cover, title, author, pageCount, status);
 	myLibrary.push(newBook);
+	displayBooks();
 }
 
 
@@ -143,7 +149,34 @@ function displayBooks() {
 	})
 }
 
+// addBookToLibrary('eragon.png', 'Eragon', 'Christopher Paolini', '300', false);
+
+// console.log(myLibrary[7].info());
+
 displayBooks();
+
+
+// Handle the form
+const newBookForm = document.getElementById('newBookForm');
+
+newBookForm.onsubmit = handleSubmit;
+
+function handleSubmit(e) {
+	e.preventDefault();
+	const formData = new FormData(e.target);
+	const formProps = Object.fromEntries(formData);
+	// console.log(formProps);
+
+	addBookToLibrary(
+		formProps.cover,
+		formProps.title,
+		formProps.author,
+		formProps.pageCount,
+		formProps.readStatus ? true : false
+	)
+	hideModal();
+	newBookForm.reset()
+}
 
 
 // modal codes
@@ -153,16 +186,24 @@ const btn = document.getElementById('newBtn');
 const closeBtn = document.getElementById('close-modal');
 
 btn.onclick = () => {
-	modal.style.display = 'block';
+	showModal();
 }
 
 closeBtn.onclick = () => {
-	modal.style.display = 'none';
+	hideModal();
 }
 
 
 window.onclick = event => {
 	if (event.target == modal) {
-		modal.style.display = 'none';
+		hideModal();
 	}
+}
+
+function showModal() {
+	modal.style.display = 'block';
+}
+
+function hideModal() {
+	modal.style.display = 'none';
 }
