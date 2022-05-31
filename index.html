@@ -136,31 +136,38 @@
 					<button id="close-modal" class="modal__close"><span class="iconify" data-icon="mdi:close"></span></button>
 				</div>
 				<div class="modal__body">
-					<form action="" class="form">
+					<form id="newBookForm" action="" class="form">
 						<div class="form__control">
 							<label for="cover">Cover Pic Url</label>
-							<input type="url" name="cover" id="cover">
+							<!-- <input type="url" name="cover" id="cover" placeholder="https://i.imgur.com/KO4moaJ.jpg"> -->
+							<input type="text" name="cover" id="cover" placeholder="https://i.imgur.com/KO4moaJ.jpg">
 						</div>
 						<div class="form__control">
 							<label for="title">Book Title</label>
-							<input type="text" name="title" id="title" placeholder="Book Title">
+							<input type="text" name="title" id="title" placeholder="The Hobbit">
 						</div>
 						<div class="form__control">
 							<label for="author">Author</label>
-							<input type="text" name="author" id="author">
+							<input type="text" name="author" id="author" placeholder="J.R.R. Tolkien">
 						</div>
 						<div class="form__control">
 							<label for="pageCount">Number of Pages</label>
-							<input type="number" name="pageCount" id="pageCount">
+							<input type="number" name="pageCount" id="pageCount" placeholder="310">
 						</div>
-						<div class="form__control--check">
-							<label for="readStatus">Read?</label>
-							<input type="checkbox" name="readStatus" id="readStatus">
+						<div class="form__control--check toggle">
+							<p>Read?</p>
+							<label class="switch">
+								<input type="checkbox" name="readStatus" id="readStatus">
+								<span class="slider"></span>
+							</label>
 						</div>
 					</form>
 				</div>
 				<div class="modal__footer">
-					testing
+					<div class="modal-actions">
+						<button class="modal-actions__btn modal-actions__btn--cancel" type="button" id="cancelBtn">Cancel</button>
+						<button class="modal-actions__btn modal-actions__btn--save" type="submit" form="newBookForm" id="saveBtn">Save</button>
+					</div>
 				</div>
 			</div>
 
