@@ -281,5 +281,14 @@ function showModal(modal) {
 }
 
 function hideModal(modal) {
-	modal.style.display = 'none';
+	// const modalContent = document.querySelector('.modal__content');
+	const modalContent = modal.getElementsByClassName('modal__content')[0];
+
+	modalContent.setAttribute('closing', '');
+
+	modalContent.addEventListener('animationend', () => {
+		modal.style.display = 'none';
+		modalContent.removeAttribute('closing');
+	}, {once: true});
+
 }

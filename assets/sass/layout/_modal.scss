@@ -13,6 +13,8 @@
 	background-color: rgb(0,0,0);
 	background-color: rgba(0,0,0,0.4);
 
+	animation: fade-in 200ms forwards;
+
 	// Modal content Box
 	&__content {
 		position: absolute;
@@ -28,6 +30,10 @@
 		// animation
 		animation-name: animateModal;
 		animation-duration: 0.6s;
+
+		&[closing] {
+			animation: reverseAnimate 600ms forwards;
+		}
 	}
 
 	// Modal Header
@@ -160,6 +166,11 @@
 @keyframes animateModal {
 	from {top: -300px; opacity: 0}
 	to {top: 50%; opacity: 1}
+}
+
+@keyframes reverseAnimate {
+	from { top: 50%; opacity: 1}
+	to { top: -300px; opacity: 0}
 }
 
 

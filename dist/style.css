@@ -373,6 +373,8 @@ body {
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
+  -webkit-animation: fade-in 200ms forwards;
+          animation: fade-in 200ms forwards;
 }
 .modal__content {
   position: absolute;
@@ -387,6 +389,10 @@ body {
           animation-name: animateModal;
   -webkit-animation-duration: 0.6s;
           animation-duration: 0.6s;
+}
+.modal__content[closing] {
+  -webkit-animation: reverseAnimate 600ms forwards;
+          animation: reverseAnimate 600ms forwards;
 }
 .modal__header {
   padding: 1rem 1.5rem;
@@ -515,6 +521,26 @@ body {
     opacity: 1;
   }
 }
+@-webkit-keyframes reverseAnimate {
+  from {
+    top: 50%;
+    opacity: 1;
+  }
+  to {
+    top: -300px;
+    opacity: 0;
+  }
+}
+@keyframes reverseAnimate {
+  from {
+    top: 50%;
+    opacity: 1;
+  }
+  to {
+    top: -300px;
+    opacity: 0;
+  }
+}
 .switch {
   position: relative;
   display: inline-block;
@@ -588,22 +614,18 @@ input:checked + .slider:before {
 @-webkit-keyframes fade-in {
   0% {
     opacity: 0;
-    transform: scale(0);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
   }
 }
 
 @keyframes fade-in {
   0% {
     opacity: 0;
-    transform: scale(0);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
   }
 }
 @-webkit-keyframes fade-out {
