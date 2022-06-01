@@ -14,49 +14,49 @@ let myLibrary = [];
 
 let books = [
 	{
-		cover: 'hobbit.jpg',
+		cover: 'https://i.imgur.com/ABEnv78.jpg',
 		title: 'The Hobbit',
 		author: 'J.R.R. Tolkien',
 		pageCount: 310,
 		readStatus: false
 	},
 	{
-		cover: 'studyinscarlet.jpg',
+		cover: 'https://i.imgur.com/RrWSYoo.jpg',
 		title: 'A Study in Scarlet',
 		author: 'Arthur Conan Doyle',
 		pageCount: 160,
 		readStatus: true
 	},
 	{
-		cover: 'aliceinwonderland.jpg',
+		cover: 'https://i.imgur.com/KO4moaJ.jpg',
 		title: 'Alice in Wonderland',
 		author: 'Lewis Carroll',
 		pageCount: 240,
 		readStatus: true
 	},
 	{
-		cover: 'wayofkings.png',
+		cover: 'https://i.imgur.com/xcf8Qop.png',
 		title: 'The Way of Kings',
 		author: 'Brandon Sanderson',
 		pageCount: 1007,
 		readStatus: true
 	},
 	{
-		cover: 'wordsofradiance.jpg',
+		cover: 'https://i.imgur.com/E2ax5e5.jpg',
 		title: 'Words of Radiance',
 		author: 'Brandon Sanderson',
 		pageCount: 1087,
 		readStatus: true
 	},
 	{
-		cover: 'oathbringer.jpg',
+		cover: 'https://i.imgur.com/xX4FtQJ.jpg',
 		title: 'Oathbringer',
 		author: 'Brandon Sanderson',
 		pageCount: 1248,
 		readStatus: false
 	},
 	{
-		cover: 'rhythmofwar.jpg',
+		cover: 'https://i.imgur.com/epi4een.jpg',
 		title: 'Rhythm of War',
 		author: 'Brandon Sanderson',
 		pageCount: 1232,
@@ -121,7 +121,8 @@ function displayBooks() {
 
 		const cover = document.createElement('img');
 		cover.className = ('book__cover');
-		cover.setAttribute('src', `assets/img/${book.cover}`)
+		// cover.setAttribute('src', `assets/img/${book.cover}`)
+		cover.setAttribute('src', book.cover);
 
 		const title = document.createElement('h2');
 		title.className = ('book__title');
