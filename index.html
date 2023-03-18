@@ -1,51 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
-	<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-	<title>Library</title>
+    <title>Library</title>
 
-	<link rel="stylesheet" href="dist/style.css">
-	<script src="assets/js/script.js" defer></script>
-</head>
-<body>
-	<header class="header">
-		<div class="search">
-			<span class="iconify search__icon" data-icon="mdi:magnify"></span>
-			<input type="text" class="search__input">
-		</div>
-		<div class="menus">
-			<button type="button"><span class="iconify menus__notifications" data-icon="mdi:bell-ring-outline"></span></button>
-			<button class="menus__img" type="button"><img src="assets/img/profile.png" alt=""></button>
-			<button class="menus__username">Nathaniel Adiah</button>
-		</div>
-		<div class="details">
-			<img src="assets/img/profile.png" alt="" class="details__pic">
-			<span class="details__greeting">Hi there,</span>
-			<span class="details__name">Nathaniel Adiah (@nathaniel)</span>
-		</div>
-		<div class="actions">
-			<button id="newBtn" class="actions__button">New</button>
-			<!-- <a href="#" class="actions__button">Upload</a>
+    <link rel="stylesheet" href="dist/style.css" />
+    <script src="assets/js/script.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="search">
+        <span class="iconify search__icon" data-icon="mdi:magnify"></span>
+        <input type="text" class="search__input" />
+      </div>
+      <div class="menus">
+        <button type="button">
+          <span
+            class="iconify menus__notifications"
+            data-icon="mdi:bell-ring-outline"
+          ></span>
+        </button>
+        <button class="menus__img" type="button">
+          <img src="assets/img/profile.png" alt="" />
+        </button>
+        <button class="menus__username">Nathaniel Adiah</button>
+      </div>
+      <div class="details">
+        <img src="assets/img/profile.png" alt="" class="details__pic" />
+        <span class="details__greeting">Hi there,</span>
+        <span class="details__name">Nathaniel Adiah (@nathaniel)</span>
+      </div>
+      <div class="actions">
+        <button id="newBtn" class="actions__button">New</button>
+        <!-- <a href="#" class="actions__button">Upload</a>
 			<a href="#" class="actions__button">Save</a> -->
-		</div>
-	</header>
+      </div>
+    </header>
 
+    <main class="main">
+      <section class="library">
+        <h1 class="section-header">Your Books</h1>
 
-	<main class="main">
-		<section class="library">
-			<h1 class="section-header">Your Books</h1>
+        <div id="library" class="container">
+          <!-- Book cards go here -->
 
-			<div id="library" class="container">
-
-				<!-- Book cards go here -->
-
-				<!-- <div class="book" data-read="true">
+          <!-- <div class="book" data-read="true">
 					<img src="assets/img/aliceinwonderland.jpg" alt="" class="book__cover">
 					<h2 class="book__title">Alice in Wonderland</h2>
 					<div class="book__body">
@@ -58,85 +66,138 @@
 						<button type="button"><span class="iconify book_icon" data-icon="mdi:share-variant"></span></button>
 					</div>
 				</div> -->
-				
+        </div>
+      </section>
 
-			</div>
-	
-		</section>
+      <!-- Modal -->
+      <div id="newBookModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal__content">
+          <div class="modal__header">
+            <!-- <span class="close">&times;</span> -->
+            <h2>Add Book</h2>
+            <button
+              id="close-modal"
+              class="modal__close closeModal"
+              data-modal="newBookModal"
+            >
+              <span class="iconify" data-icon="mdi:close"></span>
+            </button>
+          </div>
+          <div class="modal__body">
+            <form id="newBookForm" action="" class="form">
+              <div class="form__control">
+                <label for="cover">Cover Pic Url</label>
+                <!-- <input type="url" name="cover" id="cover" placeholder="https://i.imgur.com/KO4moaJ.jpg"> -->
+                <input
+                  type="url"
+                  name="cover"
+                  id="cover"
+                  placeholder="https://i.imgur.com/KO4moaJ.jpg"
+                  required
+                />
+              </div>
+              <div class="form__control">
+                <label for="title">Book Title</label>
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  placeholder="The Hobbit"
+                  required
+                />
+              </div>
+              <div class="form__control">
+                <label for="author">Author</label>
+                <input
+                  type="text"
+                  name="author"
+                  id="author"
+                  placeholder="J.R.R. Tolkien"
+                  required
+                />
+              </div>
+              <div class="form__control">
+                <label for="pageCount">Number of Pages</label>
+                <input
+                  type="number"
+                  name="pageCount"
+                  id="pageCount"
+                  placeholder="310"
+                  required
+                />
+              </div>
+              <div class="form__control--check toggle">
+                <p>Read?</p>
+                <label class="switch">
+                  <input type="checkbox" name="readStatus" id="readStatus" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </form>
+          </div>
+          <div class="modal__footer">
+            <div class="modal-actions">
+              <button
+                class="modal-actions__btn modal-actions__btn--cancel closeModal"
+                data-modal="newBookModal"
+                type="button"
+                id="cancelBtn"
+              >
+                Cancel
+              </button>
+              <button
+                class="modal-actions__btn modal-actions__btn--save"
+                type="submit"
+                form="newBookForm"
+                id="saveBtn"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-		<!-- Modal -->
-		<div id="newBookModal" class="modal">
-
-			<!-- Modal content -->
-			<div class="modal__content">
-				<div class="modal__header">
-					<!-- <span class="close">&times;</span> -->
-					<h2>Add Book</h2>
-					<button id="close-modal" class="modal__close closeModal" data-modal="newBookModal"><span class="iconify" data-icon="mdi:close"></span></button>
-				</div>
-				<div class="modal__body">
-					<form id="newBookForm" action="" class="form">
-						<div class="form__control">
-							<label for="cover">Cover Pic Url</label>
-							<!-- <input type="url" name="cover" id="cover" placeholder="https://i.imgur.com/KO4moaJ.jpg"> -->
-							<input type="text" name="cover" id="cover" placeholder="https://i.imgur.com/KO4moaJ.jpg">
-						</div>
-						<div class="form__control">
-							<label for="title">Book Title</label>
-							<input type="text" name="title" id="title" placeholder="The Hobbit">
-						</div>
-						<div class="form__control">
-							<label for="author">Author</label>
-							<input type="text" name="author" id="author" placeholder="J.R.R. Tolkien">
-						</div>
-						<div class="form__control">
-							<label for="pageCount">Number of Pages</label>
-							<input type="number" name="pageCount" id="pageCount" placeholder="310" >
-						</div>
-						<div class="form__control--check toggle">
-							<p>Read?</p>
-							<label class="switch">
-								<input type="checkbox" name="readStatus" id="readStatus">
-								<span class="slider"></span>
-							</label>
-						</div>
-					</form>
-				</div>
-				<div class="modal__footer">
-					<div class="modal-actions">
-						<button class="modal-actions__btn modal-actions__btn--cancel closeModal" data-modal="newBookModal" type="button" id="cancelBtn">Cancel</button>
-						<button class="modal-actions__btn modal-actions__btn--save" type="submit" form="newBookForm" id="saveBtn">Save</button>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-
-		<!-- Modal -->
-		<div id="deleteBookModal" class="modal">
-
-			<!-- Modal content -->
-			<div class="modal__content">
-				<div class="modal__header">
-					<!-- <span class="close">&times;</span> -->
-					<h2>Delete Book</h2>
-					<button id="closeDeleteModal" class="modal__close closeModal" data-modal="deleteBookModal"><span class="iconify" data-icon="mdi:close"></span></button>
-				</div>
-				<div class="modal__body">
-					<p>Are you sure you want to delete this book</p>
-				</div>
-				<div class="modal__footer">
-					<div class="modal-actions">
-						<button class="modal-actions__btn modal-actions__btn--cancel closeModal" type="button" id="cancelDeleteBtn" data-modal="deleteBookModal">Cancel</button>
-						<button class="modal-actions__btn modal-actions__btn--delete" type="button" id="modalDeleteBtn">Delete</button>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-	</main>
-	
-</body>
+      <!-- Modal -->
+      <div id="deleteBookModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal__content">
+          <div class="modal__header">
+            <!-- <span class="close">&times;</span> -->
+            <h2>Delete Book</h2>
+            <button
+              id="closeDeleteModal"
+              class="modal__close closeModal"
+              data-modal="deleteBookModal"
+            >
+              <span class="iconify" data-icon="mdi:close"></span>
+            </button>
+          </div>
+          <div class="modal__body">
+            <p>Are you sure you want to delete this book</p>
+          </div>
+          <div class="modal__footer">
+            <div class="modal-actions">
+              <button
+                class="modal-actions__btn modal-actions__btn--cancel closeModal"
+                type="button"
+                id="cancelDeleteBtn"
+                data-modal="deleteBookModal"
+              >
+                Cancel
+              </button>
+              <button
+                class="modal-actions__btn modal-actions__btn--delete"
+                type="button"
+                id="modalDeleteBtn"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
